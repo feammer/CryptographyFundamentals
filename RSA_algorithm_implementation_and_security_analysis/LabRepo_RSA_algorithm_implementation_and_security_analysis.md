@@ -410,7 +410,7 @@ print(ins3.encrypt(2302))
 - 使用循环实现的二进制欧几里得方法
 - 来自`gmpy2`库的`gcd`函数
 
-![gcd_algorithm_speed](C:\Users\jun\Desktop\crypto\RSA_algorithm_implementation_and_security_analysis\assets\gcd_algorithm_speed.svg)
+![gcd_algorithm_speed](./assets/gcd_algorithm_speed.svg)
 
 可以发现使用二进制优化的实现函数效率有明显提升，而将递归实现转化为循环实现能使效率进一步提升，但是在40比特及以上的规模下，相比大数库中的`gcd`实现仍然有很大差距。
 
@@ -418,25 +418,25 @@ print(ins3.encrypt(2302))
 
 这部分主要比较了自行编写的使用扩展欧几里得算法、二进制扩展欧几里得算法求解逆元和来自大数库的`invert`函数求解逆元的效率差异。
 
-![invert_function_speed](C:\Users\jun\Desktop\crypto\RSA_algorithm_implementation_and_security_analysis\assets\invert_function_speed.svg)
+![invert_function_speed](./assets/invert_function_speed.svg)
 
 ### 3.3 随机素数生成效率分析
 
 这部分主要比较了自行编写的*Miller-Rabin*算法和来自大数库的*Miller-Rabin*算法效率差异，可以发现自行编写的算法效率优化不足，在40比特规模下每生成200个随机的安全素数已经长达60秒，而来自大数库的*Miller-Rabin*算法在80比特规模下每生成200个随机的安全素数仅需要不足10秒。
 
-![prime_generate_speed](C:\Users\jun\Desktop\crypto\RSA_algorithm_implementation_and_security_analysis\assets\prime_generate_speed.svg)
+![prime_generate_speed](./assets/prime_generate_speed.svg)
 
 ### 3.4 加密效率分析
 
 由于RSA加解密涉及大量模幂运算，因此效率比较低。在下图中，比较了不同密钥长度下对同一数据（这里我们取数据长度为密钥长度减一）进行10000次加密的耗时，可以看到随密钥长度的翻倍，加密耗时也急剧增加，在1024比特长度的密钥下，加密10000次同一1023比特的数据已经达到了120秒，换算发现在1024比特长度的密钥下，加密速度仅有约12MB/s。
 
-![RSA_encrypt_speed](C:\Users\jun\Desktop\crypto\RSA_algorithm_implementation_and_security_analysis\assets\RSA_encrypt_speed.svg)
+![RSA_encrypt_speed](./assets/RSA_encrypt_speed.svg)
 
 ### 3.5 中国剩余定理解密效率分析
 
 和加密过程相同的，解密也是模幂运算。这里，我们比较了使用中国剩余定理辅助前后的解密效率，发现中国剩余定理可以显著提高解密速度。
 
-![RSA_decrypt_speed](C:\Users\jun\Desktop\crypto\RSA_algorithm_implementation_and_security_analysis\assets\RSA_decrypt_speed.svg)
+![RSA_decrypt_speed](./assets/RSA_decrypt_speed.svg)
 
 ## 4. 挑战题：大数分解
 
